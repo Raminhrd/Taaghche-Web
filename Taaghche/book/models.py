@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 
@@ -17,7 +18,7 @@ class Books(models.Model):
     price = models.IntegerField()
     author = models.CharField(max_length=100)
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
-    score = models.FloatField()
+    score = models.FloatField(validators=[MinValueValidator(0.0),MaxValueValidator(5.0)])
     description = models.TextField(max_length=300, null=True, blank=True)
 
     def __str__(self):
