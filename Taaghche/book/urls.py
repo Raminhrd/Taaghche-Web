@@ -7,4 +7,6 @@ urlpatterns = [
     path('retrieve-update-delete/<str:pk>', BookRetrieveUpdateDestroy.as_view()),
     path('category-list-create', CategoryCreateList.as_view()),
     path('category-retrieve-update-delete/<str:pk>', CategoryRetrieveUpdateDestroy.as_view()),
+    path('order-list', OrderListCreateView.as_view()),
+    path('order-detail/<str:pk>', OrderDetailView.as_view()),
 ]

@@ -4,7 +4,7 @@ from book.models import *
 from book.serializer import *
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
-from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView, ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
+from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView,RetrieveUpdateAPIView, ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 
 
 
@@ -32,4 +32,13 @@ class BookCreateList(ListCreateAPIView):
 class BookRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Books.objects.all()
     serializer_class = BookRetrieveUpdateDestroySerializer
-    
+
+
+class OrderListCreateView(ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+class OrderDetailView(RetrieveUpdateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
