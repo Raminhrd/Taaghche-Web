@@ -5,28 +5,26 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField(max_length=300, null=True, blank=True)
+    name = models.CharField(max_length=30)
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+    
 
-
-
-class Books(models.Model):
-    title = models.CharField(max_length=100)
-    price = models.IntegerField()
-    author = models.CharField(max_length=100)
+class AudioBook(models.Model):
+    title = models.CharField(max_length=30)
+    price = models.PositiveIntegerField()
+    authors = models.CharField(max_length=50)
     category = models.ManyToManyField(Category)
-    score = models.FloatField(validators=[MinValueValidator(0.0),MaxValueValidator(5.0)])
+    score = models.FloatField(validators=[MinValueValidator(0,0), MaxValueValidator(5,0)])
     description = models.TextField(max_length=300, null=True, blank=True)
 
     def __str__(self):
         return self.title
 
 
-
-class Order(models.Model):
+class AudioBookOrder(models.Model):
     STATUS_CHOICE =(
         ('pending', 'Pending'),
         ('shipped', 'Shipped'),
@@ -40,9 +38,9 @@ class Order(models.Model):
         return f'{self.id} by {self.user.username}'
     
 
-class OrderItem(models.Model):
-    product = models.ForeignKey(to=Books, on_delete=models.CASCADE)
-    order = models.ForeignKey(to=Order, on_delete=models.CASCADE)
+class AudioBookOrderItem(models.Model):
+    product = models.ForeignKey(to=AudioBook, on_delete=models.CASCADE)
+    order = models.ForeignKey(to=AudioBookOrder, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
