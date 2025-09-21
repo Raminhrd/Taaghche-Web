@@ -40,7 +40,7 @@ class AudioBookOrder(models.Model):
 
 class AudioBookOrderItem(models.Model):
     product = models.ForeignKey(to=AudioBook, on_delete=models.CASCADE)
-    order = models.ForeignKey(to=AudioBookOrder, on_delete=models.CASCADE)
+    order = models.ForeignKey(to=AudioBookOrder, on_delete=models.CASCADE, related_name="items")
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):

@@ -28,8 +28,9 @@ class AudioBookRetrieveUpdateDestroySerializer(ModelSerializer):
 
 
 class AudioBookOrderTimeSerializer(ModelSerializer):
+    product = AudioBookSerializer(read_only=True)
+    
     class Meta:
-        product = AudioBookSerializer
 
         model = AudioBookOrderItem
         fields = ['id', 'product', 'quantity']

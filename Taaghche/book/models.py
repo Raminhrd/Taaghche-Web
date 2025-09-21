@@ -16,7 +16,7 @@ class Books(models.Model):
     title = models.CharField(max_length=100)
     price = models.IntegerField()
     author = models.CharField(max_length=100)
-    category = models.ManyToManyField(Category)
+    category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
     score = models.FloatField(validators=[MinValueValidator(0.0),MaxValueValidator(5.0)])
     description = models.TextField(max_length=300, null=True, blank=True)
 
@@ -40,7 +40,7 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     product = models.ForeignKey(to=Books, on_delete=models.CASCADE)
-    order = models.ForeignKey(to=Order, on_delete=models.CASCADE)
+    order = models.ForeignKey(to=Order, on_delete=models.CASCADE, related_name="items")
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
