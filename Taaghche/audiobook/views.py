@@ -1,3 +1,36 @@
 from django.shortcuts import render
+from audiobook.models import AudioBook, Category, AudioBookOrder, AudioBookOrderItem
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveUpdateAPIView
+from audiobook.serializer import AudioBookSerializer, AudioBookRetrieveUpdateDestroySerializer, CategorySerializer, CategoryRetrieveUpdateDestroySerializer, AudioBookOrderSerializer, AudioBookOrderTimeSerializer
 
-# Create your views here.
+
+
+class CategoryListCreate(ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class CategoryRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategoryRetrieveUpdateDestroySerializer
+
+
+class AudioBookListCreate(ListCreateAPIView):
+    queryset = AudioBook.objects.all()
+    serializer_class = AudioBookSerializer
+
+
+class AudioBookRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
+    queryset = AudioBook.objects.all()
+    serializer_class = AudioBookRetrieveUpdateDestroySerializer
+
+
+
+class AudioBookOrderListCreateView(ListCreateAPIView):
+    queryset = AudioBookOrder.objects.all()
+    serializer_class = AudioBookOrderSerializer
+
+
+class AudioBookOrderDetailView(RetrieveUpdateAPIView):
+    queryset = AudioBookOrder.objects.all()
+    serializer_class = AudioBookOrderSerializer

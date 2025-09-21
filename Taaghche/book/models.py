@@ -12,7 +12,6 @@ class Category(models.Model):
         return self.name
 
 
-
 class Books(models.Model):
     title = models.CharField(max_length=100)
     price = models.IntegerField()
@@ -23,7 +22,6 @@ class Books(models.Model):
 
     def __str__(self):
         return self.title
-
 
 
 class Order(models.Model):

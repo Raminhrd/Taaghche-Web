@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from book.models import *
+from book.models import Category, Books, Order, OrderItem
 
 
 class CategorySerializer(ModelSerializer):

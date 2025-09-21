@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import  JsonResponse, HttpResponse
-from book.models import *
-from book.serializer import *
+from book.models import Category, Books, Order, OrderItem
+from book.serializer import CategorySerializer, CategoryRetrieveUpdateDestroySerializer, BookSerializer, BookRetrieveUpdateDestroySerializer, OrderSerializer, OrderTimeSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView,RetrieveUpdateAPIView, ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
