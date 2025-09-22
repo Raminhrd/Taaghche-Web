@@ -3,7 +3,7 @@ from audiobook.views  import CategoryListCreate, CategoryRetrieveUpdateDestroy, 
 
 
 urlpatterns = [
-    path('list-create', AudioBookListCreate.as_view()),
+    path('create-list', AudioBookListCreate.as_view()),
     path('retrieve-update-destroy/<str:pk>', AudioBookRetrieveUpdateDestroy.as_view()),
     path('category-list-create', CategoryListCreate.as_view()),
     path('category-retrieve-update-destroy/<str:pk>', CategoryRetrieveUpdateDestroy.as_view()),
