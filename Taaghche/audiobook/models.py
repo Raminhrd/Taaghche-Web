@@ -16,7 +16,7 @@ class AudioBook(models.Model):
     title = models.CharField(max_length=30)
     price = models.PositiveIntegerField()
     authors = models.CharField(max_length=50)
-    category = models.ManyToManyField(Category)
+    category = models.ForeignKey(to=Category, on_delete=models.CASCADE , null=True)
     score = models.FloatField(validators=[MinValueValidator(0,0), MaxValueValidator(5,0)])
     description = models.TextField(max_length=300, null=True, blank=True)
 
