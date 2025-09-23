@@ -42,3 +42,11 @@ class AudioBookOrderListCreateView(ListCreateAPIView):
 class AudioBookOrderDetailView(RetrieveUpdateAPIView):
     queryset = AudioBookOrder.objects.all()
     serializer_class = AudioBookOrderSerializer
+
+
+def Audiobook(request):
+    products = AudioBook.objects.all()
+    data = {
+        'products' : products
+    }
+    return render(request, 'audiobook/audiobooks.html', context=data)

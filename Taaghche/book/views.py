@@ -42,3 +42,11 @@ class OrderListCreateView(ListCreateAPIView):
 class OrderDetailView(RetrieveUpdateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+
+def Book(request):
+    products = Books.objects.all()
+    data = {
+        'products' : products
+    }
+    return render(request, 'book/book.html', context=data)

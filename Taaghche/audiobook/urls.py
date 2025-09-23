@@ -1,5 +1,5 @@
 from django.urls import path
-from audiobook.views  import CategoryListCreate, CategoryRetrieveUpdateDestroy, AudioBookListCreate, AudioBookRetrieveUpdateDestroy, AudioBookOrderDetailView, AudioBookOrderListCreateView
+from audiobook.views  import Audiobook,CategoryListCreate, CategoryRetrieveUpdateDestroy, AudioBookListCreate, AudioBookRetrieveUpdateDestroy, AudioBookOrderDetailView, AudioBookOrderListCreateView
 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path('category-retrieve-update-destroy/<str:pk>', CategoryRetrieveUpdateDestroy.as_view()),
     path('order-list-create', AudioBookOrderListCreateView.as_view()),
     path('oder-item-detail/<str:pk>', AudioBookOrderDetailView.as_view()),
+    path('', Audiobook)
 ]

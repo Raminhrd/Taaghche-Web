@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AudioBooks</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fb;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #007BFF;
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1200px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .card .content {
+      padding: 15px;
+      flex: 1;
+    }
+
+    .card h2 {
+      margin: 0 0 10px 0;
+      font-size: 1.25rem;
+      color: #222;
+    }
+
+    .card .subtext {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #007BFF;
+      margin-bottom: 10px;
+    }
+
+    .score {
+      color: #FFB800;
+      margin-bottom: 10px;
+    }
+
+    .card img {
+      image-rendering: initial;
+      width: 100%;
+      object-fit: cover;
+      height: 180px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      background-color: #ffffff;
+      color: #888;
+      font-size: 0.9rem;
+      box-shadow: 0 -1px 4px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎧 AudioBooks</h1>
+  </header>
+
+  <div class="container">
+    {% for product in products %}
+    <div class="card">
+      {% if product.picture %}
+      <img src="{{ product.picture.url }}" alt="{{ product.title }}" />
+      {% else %}
+      <img src="placeholder-image.jpg" alt="No Image" />
+      {% endif %}
+      <div class="content">
+        <h2>{{ product.title }}</h2>
+        <p class="subtext">دسته بندی: {{ product.category }}</p>
+        <p class="subtext">نویسنده: {{ product.authors }}</p>
+        <p class="price">💰 قیمت: {{ product.price }} تومان</p>
+        <p class="score">⭐ امتیاز: {{ product.score }} از 5</p>
+        <p class="subtext">{{ product.description|truncatewords:20 }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <footer>
+    © 2025 BookHub create with ❤️ by Ramin
+  </footer>
+</body>
+</html>
